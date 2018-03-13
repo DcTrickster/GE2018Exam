@@ -5,6 +5,7 @@ using UnityEngine;
 public class OffsetPursue : SteeringBehavior 
 {
 	public Boid leader;
+	public GameObject leaderObj;
 	private Vector3 offset;
 	Vector3 worldTarget;
 
@@ -19,6 +20,12 @@ public class OffsetPursue : SteeringBehavior
 		offset = transform.position - leader.transform.position;
 		offset = Quaternion.Inverse(leader.transform.rotation) * offset;
 
+	}
+
+	void Update ()
+	{
+		leaderObj = GameObject.FindGameObjectWithTag ("Leader");
+		leader = leaderObj.GetComponent<Boid> ();
 	}
 
 

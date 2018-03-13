@@ -15,13 +15,21 @@ public class EagleSpawner : MonoBehaviour
 	// Use this for initialization
 	void Awake () 
 	{
-		for (int i = 0; i < 5; i++) 
+		for (int i = 0; i < 1; i++) 
 		{
 	
-			Instantiate (eaglePrefab, new Vector3 (this.transform.position.x, 0, i * gap), Quaternion.identity);
-
+			Instantiate (eaglePrefab, new Vector3 (i, 0, i * gap), Quaternion.identity);
+			SpawnFollowers ();
 		}
 
+	}
+
+	public void SpawnFollowers()
+	{
+		for (int i = 0; i < 4; i++) 
+		{
+			Instantiate (eagleFollowerPrefab, new Vector3 (1 * gap, 0, i * gap), Quaternion.identity);
+		}
 	}
 
 }

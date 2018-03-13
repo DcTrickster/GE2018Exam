@@ -12,6 +12,11 @@ public class Boid : MonoBehaviour
 	public float mass = 1f;
 	public float maxSpeed = 10f;
 
+	public const float proxyDist = 0.5f;
+
+
+	public GameObject destination;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -21,6 +26,10 @@ public class Boid : MonoBehaviour
 		{
 			this.behaviors.Add (b);
 		}
+
+		destination = GameObject.Find ("Goal");
+
+
 	}
 	
 	// Update is called once per frame
@@ -56,7 +65,7 @@ public class Boid : MonoBehaviour
 
 	public Vector3 Seek(Vector3 target)
 	{
-		Vector3 desired = target - transform.position;
+		Vector3 desired = destination.transform.position - transform.position;
 		desired.Normalize ();
 		desired *= maxSpeed;
 
