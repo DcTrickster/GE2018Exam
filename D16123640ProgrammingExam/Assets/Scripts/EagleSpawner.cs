@@ -7,17 +7,21 @@ public class EagleSpawner : MonoBehaviour
 
 	public float gap = 20;
 	public float followers = 2;
-	public GameObject prefab;
+	public GameObject eaglePrefab;
+	public GameObject eagleFollowerPrefab;
+
+
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
-		
-	}
+		for (int i = 0; i < 5; i++) 
+		{
 	
-	// Update is called once per frame
-	void Update () 
-	{
-		
+			Instantiate (eaglePrefab, new Vector3 (this.transform.position.x, 0, i * gap), Quaternion.identity);
+
+		}
+
 	}
+
 }
